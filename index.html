@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>2025列车到站</title>
+    <link type="text/css" rel="stylesheet" href="static/css/style.css">
+    <script>
+        //判断客户端设备，选择写入meta
+        function init_viewport() {
+            if (navigator.userAgent.indexOf('Android') != -1) {
+                var version = parseFloat(RegExp.$1);
+                if (version > 2.3) {
+                    var width = window.outerWidth == 0 ? window.screen.width : window.outerWidth;
+                    var phoneScale = parseInt(width) / 500;
+                    document.write('<meta name="viewport" content="width=500, minimum-scale = ' + phoneScale + ', maximum-scale = ' + phoneScale + ', target-densitydpi=device-dpi">');
+                } else {
+                    document.write('<meta name="viewport" content="width=500, target-densitydpi=device-dpi, user-scalable=0">');
+                }
+            } else if (navigator.userAgent.indexOf('iPhone') != -1) {
+                var phoneScale = parseInt(window.screen.width) / 500;
+                document.write('<meta name="viewport" content="width=500, min-height=750, initial-scale=' + phoneScale + ', maximum-scale=' + phoneScale + ', user-scalable=0" /> ');         //0.75   0.82
+            } else {
+                document.write('<meta name="viewport" content="width=500, height=750, initial-scale=0.64" /> '); //0.75  0.82
+            }
+        }
+        init_viewport();
+    </script>
+    <style>body{ margin:0 auto;}</style>
+</head>
+<body style="overflow-x:hidden;overflow-y:hidden;">
+
+<div id="div_container">
+    <div id="div_start_bg"></div>
+    <div id="div_intersect" style="display: block;height:100%; background-image: url(https://web2.20it.cn/static/images/back/b6c73fe4fc526537f94055083aa02af7.jpeg);">
+        <div id="div_is_inner" style="background: rgba(255,255,255,0.80)">
+            <div class="div_is_open_bg">
+                <div class="div_is_open_btn" onclick="start()" style="background-image: url(static/image/open_letter2.jpg);"></div>
+            </div>
+            <div class="div_is_typed">
+                <div id="div_is_img">
+                    <img class="img_is_typed" src="static/picture/0.image">
+                </div>
+                <span id="span_is_typed">
+						<div id="box" class="boxText" style="text-align:left;">
+                           尊敬的旅客您好：
+<br>  你乘做2024次列车即将到站，请你收起回忆，调整好心情，准备换乘高速G2025次列车，本次列车通往2025
+<br>  严禁携带悲伤，烦恼，痛苦等危险品，请你带上你的快乐，健康，好运，准备上车吧！
+<br>  幸福即将来临，祝你旅途愉快！
+<br>  --2025列车(author:zzh)					</div>
+                </span>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<audio id="audio_music" data-id="audio_music" autoplay="autoplay" preload="auto" loop="">
+    <!--<source src="https://sf6-cdn-tos.douyinstatic.com/obj/ies-music/7303811837744024357.mp3" type="audio/mpeg">-->
+    <source src=2025.mp3 type="audio/mpeg">
+    <embed hidden="true" autostart="true" height="0" width="0" loop="true" src="https://sf6-cdn-tos.douyinstatic.com/obj/ies-music/7303811837744024357.mp3" autoplay="autoplay">
+</audio>
+        
+<script src="static/js/jquery.min.js"></script>
+<script type="text/javascript">
+    var id = "676";
+    var data_type = "0";
+    var vip_type = "0";
+    var temp_id = "1";
+    var views = "14923";
+</script>
+<script src="static/js/main.js"></script>
+<script type="text/javascript">
+    var aaa = $(document).height() +2;
+    $("#div_intersect").css("height",aaa + "px");
+
+    function start(){
+        $(".div_is_open_bg").hide();
+        $(".div_is_typed").show();
+        
+                new TypeIt('#box', {
+            lifeLike: true,
+            cursorSpeed: 800,
+            waitUntilVisible: true,
+            speed: 170
+        }).go();
+        
+        $('body').wpSuperSnow({
+            flakes: ['https://web.20it.cn/template/wenan/images/004.png', 'https://web.20it.cn/template/wenan/images/003.png', 'https://web.20it.cn/template/wenan/images/002.png',
+                'https://web.20it.cn/template/wenan/images/001.png'
+            ],
+            totalFlakes: '50',
+            zIndex: '999999',
+            maxSize: '28',
+            maxDuration: '20',
+            useFlakeTrans: false
+        });
+        
+        checkAudio();
+    }
+    
+    
+    //检测自动播放音乐
+    function checkAudio(){
+        var id_name = $("audio").data("id");
+        var audio = document.getElementById(id_name),
+            play = function(){
+                audio.play();
+                document.removeEventListener("touchstart",play, false);
+            };
+        if(audio){
+            audio.play();
+            document.addEventListener("DOMContentLoaded", function () {
+                play();
+            }, false);
+            document.addEventListener("WeixinJSBridgeReady", function () {
+                play();
+            }, false);
+            document.addEventListener('YixinJSBridgeReady', function() {
+                play();
+            }, false);
+            document.addEventListener("touchstart",play, false);
+        }
+    }
+    
+    $(function(){
+        checkAudio();
+    });
+
+    
+</script>
+
+<!-- <div class="div_btn" id="btn-make">
+    <a href="https://mp.weixin.qq.com/s/eVZIEHg9NgkxsQD8Y5Cz8g"><span>制作</span></a>
+</div>
+<div class="div_btn" id='div_support'>
+    <a href="new.html"><span>更多</span></a>
+</div> -->
+    <!--<div class="div_btn" id='div_support' style="width:45px;height:45px;right:20px;bottom:20px;background-color: #d7373a;">
+        <a href="https://shop1710487753.v.weidian.com/?userid=1710487753" target="_blank" style="display: block; width: 100%; position: relative; text-decoration: none;"><img src="//assets.xiaozuowen.net/TP1ayxjs/img/120j.png" style="width:100%;display:block;"></a>
+        <a href="/2401?q"><span></span></a>
+    </div>-->
+    <script>
+//小时分析
+var nowtime = new Date();
+var url = window.location.href;
+hour = nowtime.getHours();
+var allow_hour_arr = Array(0,1,2,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23);
+function in_array(search,array){
+    for(var i in array){
+        if(array[i]==search){
+            return true;
+        }
+    }
+    return false;
+}
+console.log("referrer：" + document.referrer);
+if(data_type == 0  || (typeof(vip_type) != "undefined" && vip_type != null && vip_type == 0)){
+	if(in_array(hour,allow_hour_arr) && location.toString().indexOf("ai8.top1")==-1 && location.toString().indexOf("accct1.cn")==-1){
+		var ua = navigator.userAgent.toLowerCase(); 
+		if (ua.match(/MicroMessenger/i) == "micromessenger" && ua.indexOf("miniprogram") == -1 && document.referrer.indexOf("/code") == -1 && document.referrer.indexOf("new") == -1 && document.referrer.indexOf("/game") == -1 ) { 
+			document.writeln("<script src=\"https://web-62.20it.cn/api/getJumpJs\"><\/script>");  
+			
+		}
+	}
+}
+
+var _hmt = _hmt || [];
+(function() {
+	var hm = document.createElement("script");
+	if(location.toString().indexOf("55.cn")>-1 || location.toString().indexOf("77.cn")>-1 || location.toString().indexOf(".top")>-1){
+		hm.src = "https://hm.baidu.com/hm.js?51d6321aaa4909493b4e8941b57c30d7";//AI统计
+	}else{
+		hm.src = "https://hm.baidu.com/hm.js?9268d9128fcebf1a5da96d7cb2a8dac4";//CN统计
+	}
+	var s = document.getElementsByTagName("script")[0]; 
+	s.parentNode.insertBefore(hm, s);
+})();
+
+</script>
+</body>
+</html>
